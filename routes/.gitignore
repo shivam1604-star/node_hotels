@@ -1,0 +1,4 @@
+# Ignore node_modules directoey
+node_modules/
+
+# Others enttries..
