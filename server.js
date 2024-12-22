@@ -2,11 +2,16 @@ const express = require('express');
 // import express from 'express'
 const app = express();
 const db = require('./db');
+require('dotenv').config();
 // import { db } from './models/Person.js';
 
 const bodyParser = require('body-parser');
 // import bodyParser from 'body-parser';
 app.use(bodyParser.urlencoded({ extended: true }));  // store objects or data in req.body and we can easily use it
+
+const PORT = process.env.PORT || 3000;
+
+
 app.use(express.json())
 
 const Person = require('./models/Person');
@@ -18,20 +23,20 @@ app.get('/', function (req, res) {
   res.send('Welcome to my hotel ... How can i help you ?, We have list of meus')
 })
 
-// app.get('/paneer', (req,res)=>{
-//   res.send('sure sir, i would love to serve you paneer')
-// })
+app.get('/paneer', (req, res) => {
+  res.send('sure sir, i would love to serve you paneer')
+})
 
-// app.get('/milk', (req,res)=>{
-//   var customized_milk ={
-//     company : 'vita',
-//     quantity :'1 litre',
-//     price : '50 rs',
-//     is_packed : true,
-//     is_fresh : true,
-//   }
-//   res.send(customized_milk)
-// })
+app.get('/milk', (req, res) => {
+  var customized_milk = {
+    company: 'vita',
+    quantity: '1 litre',
+    price: '50 rs',
+    is_packed: true,
+    is_fresh: true,
+  }
+  res.send(customized_milk)
+})
 
 // // POST route to add a person
 // app.post('/Person', (req,res)=>{
@@ -169,9 +174,8 @@ const personRoutes = require('./routes/personRoutes');
 app.use('/person', personRoutes);
 //app.use('/menu', menuItemsRoutes);
 
-
-const port = 5000;
+const port = 3000;
 
 app.listen(port, () => {
-  console.log('listening on port 5000');
+  console.log('listening on port 3000');
 })

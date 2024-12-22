@@ -1,4 +1,4 @@
 # Ignore node_modules directoey
 node_modules/
-
+.env
 # Others enttries..
